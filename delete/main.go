@@ -14,8 +14,8 @@ func main() {
 	)
 	svc := sqs.New(sess)
 
-	result, err := svc.GetQueueUrl(&sqs.GetQueueUrlInput{
-		QueueName: aws.String("queue1"),
+	result, err := svc.DeleteQueue(&sqs.DeleteQueueInput{
+		QueueUrl: aws.String("https://sqs.us-east-1.amazonaws.com/265025916637/queue1"),
 	})
 
 	if err != nil {
@@ -23,5 +23,5 @@ func main() {
 		return
 	}
 
-	fmt.Println("Success", *result.QueueUrl)
+	fmt.Println("Sucess", result)
 }
